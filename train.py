@@ -31,17 +31,17 @@ EPOCH = 50
 LEARNING_RATE = 0.01
 NUMBER_OF_TRAINING_SAMPLES = 5000
 
-neural_net = model.NN()
+neural_network = model.NN()
 deep_architecture = model.architectures[model.DEEP]
 vanilla_architecture = model.architectures[model.VANILLA]
 
 vanilla_start = time.time()
 print("-----Start Vanilla Model Training-----")
-vanilla_params, vanilla_loss_history, vanilla_loss = neural_net.train(X_train, vanilla_architecture, EPOCH,
-                                                                      LEARNING_RATE,
-                                                                      NUMBER_OF_TRAINING_SAMPLES, EUCLIDEAN_DISTANCE)
+vanilla_params, vanilla_loss_history, vanilla_loss = neural_network.train(X_train, vanilla_architecture, EPOCH,
+                                                                          LEARNING_RATE,
+                                                                          NUMBER_OF_TRAINING_SAMPLES, EUCLIDEAN_DISTANCE)
 vanill_end = time.time()
-neural_net.save(vanilla_params, model.VANILLA)
+neural_network.save(vanilla_params, model.VANILLA)
 
 plt.plot(range(EPOCH), vanilla_loss_history, color='red')
 plt.xlabel("EPOCHS")
@@ -52,10 +52,10 @@ plt.show()
 
 deep_start = time.time()
 print("-----Start Deep Model Training-----")
-deep_params, deep_loss_history, deep_loss = neural_net.train(X_train, deep_architecture, EPOCH, LEARNING_RATE,
-                                                             NUMBER_OF_TRAINING_SAMPLES, CROSS_ENTROPY)
+deep_params, deep_loss_history, deep_loss = neural_network.train(X_train, deep_architecture, EPOCH, LEARNING_RATE,
+                                                                 NUMBER_OF_TRAINING_SAMPLES, CROSS_ENTROPY)
 deep_end = time.time()
-neural_net.save(deep_params, model.DEEP)
+neural_network.save(deep_params, model.DEEP)
 
 plt.plot(range(EPOCH), deep_loss_history, color='red')
 plt.xlabel("EPOCHS")
